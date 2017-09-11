@@ -23,6 +23,13 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView("redirect:/login");
 		return mv;
 	}
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public ModelAndView logout(User user, HttpSession session) {
+		ModelAndView mv = new ModelAndView("redirect:/login");
+		session.invalidate();
+		return mv;
+	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView auth(User user, HttpSession session) {
