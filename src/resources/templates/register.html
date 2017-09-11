@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>NetGifs</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>NetGifs - Cadastro</strong>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" th:object="${user}" th:action="@{/register}" method="POST" style="margin: 10px">
+                <div class="form-group">
+                    <fieldset>
+                        <div class="form-group row">
+                            <div class="alert alert-danger" th:if="${user.isError()}">
+                            	<span th:text="${user.message}"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">                                                          
+                            <div class="col-md-4">
+                                <label>Nome</label>
+                                <input type="text" class="form-control input-sm" th:field="*{name}" autofocus="autofocus" placeholder="Informe o usuário" maxlength="50"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">                                                          
+                            <div class="col-md-4">
+                                <label>Sexo</label>
+                                <div class="btn-group" data-toggle="gender">
+	                                <label class="btn btn-primary">
+	                                	<input type="radio" th:field="*{gender}" autofocus="autofocus" value="M"/>Masculino
+	                                </label>
+	                                <label class="btn btn-primary">
+	                                	<input type="radio" th:field="*{gender}" autofocus="autofocus" value="F"/>Feminino
+	                                </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">                                                          
+                            <div class="col-md-4">
+                                <label>Usu&aacute;rio</label>
+                                <input type="text" class="form-control input-sm" th:field="*{username}" placeholder="Informe o usuário" maxlength="50"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <label>Senha</label> 
+                                <input type="password" class="form-control input-sm" th:field="*{password}" maxlength="100" placeholder="Informe a senha"/>
+                            </div>
+                        </div>  
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <label>Confirma senha</label> 
+                                <input type="password" class="form-control input-sm" th:field="*{confirmPassword}" maxlength="100" placeholder="Repita a senha"/>
+                            </div>
+                        </div>               
+                    </fieldset>
+                </div>
+                <div class="form-group row">
+                    <button type="submit" class="btn btn-sm btn-primary">Salvar</button>
+                    <a th:href="@{/login}" class="btn btn-sm btn-default">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
