@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>NetGifs</title>
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet"></link>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong>NetGifs - Lista de Gifs</strong>
+			<a th:href="@{/menu}" class="btn btn-sm btn-default">Main</a>
+			<a th:href="@{/cadastrar}" class="btn btn-sm btn-default">Cadastro</a>
+		</div>
+		<div class="panel-body">
+			<div class="form-group">
+				<fieldset>
+					<table>
+						<tbody>
+							<tr th:each="gif: ${gifs}">
+								<p>
+									<a th:href="@{/exibir(id=${gif.id})}"><img th:src="${gif.urlGif}" height="100" width="100" /></a>
+								</p>
+								<label>Descrição:</label>
+								<p th:text="${gif.descricao}"></p>
+
+								<label>Genero:</label>
+								<p th:text="${gif.genero}"></p>
+
+								<label>Faixa Etária:</label>
+								<p th:text="${gif.faixaEtaria}"></p>
+
+								<label>Idioma:</label>
+								<p th:text="${gif.idioma}"></p>
+							</tr>
+						</tbody>
+					</table>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
