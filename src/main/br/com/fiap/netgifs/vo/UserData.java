@@ -10,7 +10,7 @@ public class UserData {
 	public UserData(User user) {
 		this.id = user.getId();
 		this.name = user.getName();
-		this.admin = "YES".equals(user.getAdmin());
+		this.admin = "Y".equals(user.getAdmin());
 	}
 	
 	public Long getId() {
