@@ -43,7 +43,7 @@ public class User {
 		joinColumns = { @JoinColumn(name = "ID_USER") }, 
 		inverseJoinColumns = {@JoinColumn(name = "ID_IMAGE") })
 	private List<Image> favorites;
-
+	
 	@Transient
 	private String confirmPassword;
 

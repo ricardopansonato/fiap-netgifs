@@ -32,6 +32,19 @@
 					<p th:text="${image.description}"/>
 				</div>
 			</div>
+			
+			<div th:each="category : ${categoryList}">
+				<div class="form-group" style="clear:both">
+					<strong th:text="${category.name}"></strong>
+				</div>			
+				<div class="form-group">
+					<div class="pull-left col-md-1" th:each="image : ${imageByCategory.get(category)}">
+						<a th:href="@{/content/detail(id=${image.id})}"><img th:src="${image.url}" height="100%" width="100%" /></a>
+						<p th:text="${image.description}"/>
+					</div>
+				</div>				
+			</div>
+			
 			<div class="form-group" style="clear:both">
 				<strong>Favoritos</strong>
 			</div>			

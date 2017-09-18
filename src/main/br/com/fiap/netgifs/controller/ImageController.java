@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.fiap.netgifs.model.Category;
 import br.com.fiap.netgifs.model.Image;
 import br.com.fiap.netgifs.model.User;
+import br.com.fiap.netgifs.repository.CategoryRepository;
 import br.com.fiap.netgifs.repository.ImageRepository;
 import br.com.fiap.netgifs.repository.UserRepository;
 import br.com.fiap.netgifs.vo.UserData;
@@ -28,19 +30,27 @@ public class ImageController {
 	@Autowired	
 	private UserRepository userRepository;
 	
+	@Autowired
+	private CategoryRepository categoryRepository;
+	
 	@RequestMapping(value = "/upload", method = RequestMethod.GET)
 	public ModelAndView viewUpload(final HttpSession session, final Image image) {
 		final UserData userData = (UserData) session.getAttribute("user");
 		final ModelAndView mv = new ModelAndView("upload");
+		final List<Category> categories = categoryRepository.findAll();
 		mv.addObject("user", userData);
 		mv.addObject("image", image);
+		mv.addObject("categoryList", categories);
 		return mv;
 	}
 	
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public ModelAndView upload(final Image image) {
-		String view = "upload";
+	public ModelAndView upload(final HttpSession session, final Image image) {
+		final UserData userData = (UserData) session.getAttribute("user");
 		final Image dbImage = imageRepository.findByDescription(image.getDescription());
+		final List<Category> categories = categoryRepository.findAll();
+		
+		String view = "upload";
 		if(dbImage != null) {
 			image.setMessage("Imagem já existe, favor cadastrar outra imagem!");
 		} else {
@@ -49,6 +59,8 @@ public class ImageController {
 		}
 		final ModelAndView mv = new ModelAndView(view);
 		mv.addObject("image", image);
+		mv.addObject("user", userData);
+		mv.addObject("categoryList", categories);
 		return mv;
 	}
 

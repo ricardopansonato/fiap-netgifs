@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -22,14 +23,11 @@ public class Image {
 	@Column(name = "ID_IMAGE", nullable = false)
 	private Long id;
 	
-	@Column(name = "DS_URL", nullable = false)
+	@Column(name = "DS_URL", nullable = false, length = 4000)
 	private String url;
 	
 	@Column(name = "DS_DESCRIPTION", nullable = false)
 	private String description;
-
-	@Column(name = "DS_GENRE", nullable = false)
-	private String genre;
 
 	@Column(name = "DS_LANGUAGE", nullable = false)
 	private String language;
@@ -37,6 +35,9 @@ public class Image {
 	@Column(name = "DS_RATINGS", nullable = false)
 	private String ratings;
 
+	@ManyToOne
+	private Category category;
+	
     @ManyToMany(mappedBy="favorites", fetch=FetchType.EAGER)
     private List<User> users;
 	
@@ -67,14 +68,6 @@ public class Image {
 		this.description = description;
 	}
 
-	public String getGenre() {
-		return genre;
-	}
-
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
-
 	public String getLanguage() {
 		return language;
 	}
@@ -97,6 +90,14 @@ public class Image {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+	
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public String getMessage() {

@@ -26,14 +26,14 @@
 		</div>
 		<div class="panel-body">
 			<p>
-				<img id="image" th:src="${image.url}" height="100" width="100" />
+				<img id="image" th:src="${image.url}" height="20%" width="20%" />
 			</p>
 
 			<label>Descrição</label>
 			<p th:text="${image.description}"></p>
 
 			<label>Genero</label>
-			<p th:text="${image.genre}"></p>
+			<p th:text="${image.category.name}"></p>
 
 			<label>Faixa Etária</label>
 			<p th:text="${image.ratings}"></p>
@@ -83,11 +83,11 @@
 		function() {
 			if (IsFullScreenCurrently()) {
 				$("#image").attr('height', window.screen.height);
-				$("#image").attr('width', window.screen.height);
+				$("#image").attr('width', window.screen.width);
 
 			} else {
-				$("#image").attr('height', 100);
-				$("#image").attr('width', 100);
+				$("#image").attr('height', "20%");
+				$("#image").attr('width', "20%");
 			}
 		});
 	</script>
