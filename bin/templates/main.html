@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>NetGifs</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+           	<a th:href="@{/content/main}" class="btn btn-sm btn-default"><strong>NetGifs - Inicial</strong></a> 
+            <div class="pull-right">
+            	<div style="display: inline" th:if="${user.admin}">
+            		<a th:href="@{/content/upload}" class="btn btn-sm btn-default">Adicionar imagem</a>
+            		<a th:href="@{/content/register}" class="btn btn-sm btn-default">Cadastrar usuário</a>
+            		<a th:href="@{/content/category}" class="btn btn-sm btn-default">Cadastrar categoria</a>
+            	</div>
+            	<a th:href="@{/logout}" class="btn btn-sm btn-default">Sair</a>
+            </div>
+        </div>
+		<div class="panel-body">
+			<div class="form-group">
+				<strong>Lançamentos</strong>
+			</div>
+			<div class="form-group">
+				<div class="pull-left col-md-1" th:each="image : ${images}">
+					<a th:href="@{/content/detail(id=${image.id})}"><img th:src="${image.url}" height="100%" width="100%" /></a>
+					<p th:text="${image.description}"/>
+				</div>
+			</div>
+			<div class="form-group" style="clear:both">
+				<strong>Favoritos</strong>
+			</div>			
+			<div class="form-group">
+				<div class="pull-left col-md-1" th:each="favorite : ${favorites}">
+					<a th:href="@{/content/detail(id=${favorite.id})}"><img th:src="${favorite.url}" height="100%" width="100%" /></a>
+					<p th:text="${favorite.description}"/>
+				</div>
+			</div>
+		</div>
+    </div>
+</body>
+</html>

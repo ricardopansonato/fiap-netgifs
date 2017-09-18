@@ -12,17 +12,17 @@ import br.com.fiap.netgifs.repository.UserRepository;
 
 @Component
 public class DataLoader implements ApplicationRunner {
-	
-    private UserRepository userRepository;
 
-    private ImageRepository imageRepository;
-    
-    @Autowired
-    public DataLoader(UserRepository userRepository, ImageRepository imageRepository) {
-        this.userRepository = userRepository;
-        this.imageRepository = imageRepository;
-    }
-	
+	private UserRepository userRepository;
+
+	private ImageRepository imageRepository;
+
+	@Autowired
+	public DataLoader(UserRepository userRepository, ImageRepository imageRepository) {
+		this.userRepository = userRepository;
+		this.imageRepository = imageRepository;
+	}
+
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		final User admin = new User();
@@ -32,7 +32,7 @@ public class DataLoader implements ApplicationRunner {
 		admin.setUsername("admin");
 		admin.setPassword("admin");
 		userRepository.save(admin);
-		
+
 		final Image image = new Image();
 		image.setDescription("Animação inicial");
 		image.setGenre("Comédia");
