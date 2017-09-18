@@ -62,7 +62,7 @@
 	<classpathentry kind="lib" path="lib/spring-orm-4.2.6.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-plugin-core-1.2.0.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-tx-4.2.6.RELEASE.jar"/>
-	<classpathentry kind="lib" path="lib/spring-web-4.2.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-web-4.2.6.RELEASE.jar" sourcepath="C:/Users/Ricardo/.m2/repository/org/springframework/spring-web/4.2.6.RELEASE/spring-web-4.2.6.RELEASE-sources.jar"/>
 	<classpathentry kind="lib" path="lib/spring-webmvc-4.2.6.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/tomcat-embed-core-8.0.33.jar"/>
 	<classpathentry kind="lib" path="lib/tomcat-embed-el-8.0.33.jar"/>

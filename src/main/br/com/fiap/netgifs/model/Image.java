@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -32,8 +33,11 @@ public class Image {
 
 	@Column(name = "DS_LANGUAGE", nullable = false)
 	private String language;
+	
+	@Column(name = "DS_RATINGS", nullable = false)
+	private String ratings;
 
-    @ManyToMany(mappedBy="favorites")
+    @ManyToMany(mappedBy="favorites", fetch=FetchType.EAGER)
     private List<User> users;
 	
 	@Transient
@@ -77,6 +81,14 @@ public class Image {
 
 	public void setLanguage(String language) {
 		this.language = language;
+	}
+
+	public String getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(String ratings) {
+		this.ratings = ratings;
 	}
 
 	public List<User> getUsers() {

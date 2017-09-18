@@ -15,7 +15,7 @@ import javax.persistence.Transient;
 import org.springframework.util.StringUtils;
 
 @Entity
-@Table(name = "USUARIO")
+@Table(name = "USER")
 public class User {
 
 	@Id
@@ -37,7 +37,7 @@ public class User {
 	
 	@Column(name = "DS_ADMIN", nullable = true)
 	private String admin;
-
+	
 	@ManyToMany
 	@JoinTable(name = "USER_HAS_FAVORITES", 
 		joinColumns = { @JoinColumn(name = "ID_USER") }, 

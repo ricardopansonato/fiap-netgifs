@@ -12,20 +12,33 @@
 <body>
     <div class="panel panel-default">
         <div class="panel-heading">
-            <strong>NetGifs - Inicial</strong>
+           	<a th:href="@{/content/main}" class="btn btn-sm btn-default"><strong>NetGifs - Inicial</strong></a> 
             <div class="pull-right">
             	<div style="display: inline" th:if="${user.admin}">
             		<a th:href="@{/content/upload}" class="btn btn-sm btn-default">Adicionar imagem</a>
-            		<a th:href="@{/register}" class="btn btn-sm btn-default">Cadastrar</a>
+            		<a th:href="@{/content/register}" class="btn btn-sm btn-default">Cadastrar usuário</a>
+            		<a th:href="@{/content/category}" class="btn btn-sm btn-default">Cadastrar categoria</a>
             	</div>
             	<a th:href="@{/logout}" class="btn btn-sm btn-default">Sair</a>
             </div>
         </div>
 		<div class="panel-body">
 			<div class="form-group">
+				<strong>Lançamentos</strong>
+			</div>
+			<div class="form-group">
 				<div class="pull-left col-md-1" th:each="image : ${images}">
-					<img th:src="${image.url}" height="100%" width="100%" />
+					<a th:href="@{/content/detail(id=${image.id})}"><img th:src="${image.url}" height="100%" width="100%" /></a>
 					<p th:text="${image.description}"/>
+				</div>
+			</div>
+			<div class="form-group" style="clear:both">
+				<strong>Favoritos</strong>
+			</div>			
+			<div class="form-group">
+				<div class="pull-left col-md-1" th:each="favorite : ${favorites}">
+					<a th:href="@{/content/detail(id=${favorite.id})}"><img th:src="${favorite.url}" height="100%" width="100%" /></a>
+					<p th:text="${favorite.description}"/>
 				</div>
 			</div>
 		</div>
