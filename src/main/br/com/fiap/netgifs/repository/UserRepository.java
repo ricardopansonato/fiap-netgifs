@@ -7,6 +7,4 @@ import br.com.fiap.netgifs.model.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 	
 	User findByUsername(String username);
-	
-	User findOne(Long id);
 }

@@ -12,14 +12,23 @@
 <body>
     <div class="panel panel-default">
         <div class="panel-heading">
-            <strong>Content</strong>
-            <a th:href="@{/logout}" class="btn btn-sm btn-default">Sair</a>
-            <a th:href="@{/detalhegif}" class="btn btn-sm btn-default">Detalhes</a>
-            <a th:href="@{/cadastrar}" class="btn btn-sm btn-default">Cadastro</a>
-            <a th:href="@{/listar}" class="btn btn-sm btn-default">Listar</a>
+            <strong>NetGifs - Inicial</strong>
+            <div class="pull-right">
+            	<div style="display: inline" th:if="${user.admin}">
+            		<a th:href="@{/content/upload}" class="btn btn-sm btn-default">Adicionar imagem</a>
+            		<a th:href="@{/register}" class="btn btn-sm btn-default">Cadastrar</a>
+            	</div>
+            	<a th:href="@{/logout}" class="btn btn-sm btn-default">Sair</a>
+            </div>
         </div>
-
+		<div class="panel-body">
+			<div class="form-group">
+				<div class="pull-left col-md-1" th:each="image : ${images}">
+					<img th:src="${image.url}" height="100%" width="100%" />
+					<p th:text="${image.description}"/>
+				</div>
+			</div>
+		</div>
     </div>
-    
 </body>
 </html>
